@@ -1,6 +1,7 @@
-import 'package:audible_news/constant/constant.dart';
 import 'package:audible_news/modils/news.dart';
 import 'package:audible_news/screens/news_feed/news_list.dart';
+import 'package:audible_news/services/services.dart';
+import 'package:audible_news/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,38 +15,29 @@ class _NewsFeedState extends State<NewsFeed> {
   TabController tabController;
   ScrollController scrollController;
 
-  bool loadingInPregrass = false;
-  var usNewsList;
-  var egyptNewsList;
-
-  void getNews() async {
-    News news = News();
-    final topEgyptNews = await news.getNews(country: egypt, about: topHeadline);
-    final topUsNews = await news.getNews(country: us, about: everyThing);
-    setState(() {
-      loadingInPregrass = false;
-      usNewsList = topUsNews;
-      egyptNewsList = topEgyptNews;
-    });
-  }
+  Future<News> getUsNews;
+  Future<News> getEgNews;
+  Future<News> getDeNews;
 
   @override
   void initState() {
-    loadingInPregrass = true;
-    getNews();
     super.initState();
+    getUsNews = getListOfUsNews();
+    getEgNews = getListOfEgNews();
+    getDeNews = getListOfDeNews();
   }
 
   @override
   void dispose() {
     tabController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
@@ -63,24 +55,71 @@ class _NewsFeedState extends State<NewsFeed> {
             labelColor: Colors.white,
             controller: tabController,
             tabs: [
-              Tab(text: '#Us'),
-              Tab(text: '#Egypt'),
+              Tab(text: '#Us_News'),
+              Tab(text: '#Egypt_News'),
+              Tab(text: '#Germany_News'),
             ],
           ),
         ),
-        body: loadingInPregrass
-            ? Center(
-                child: SpinKitCubeGrid(
-                  color: Theme.of(context).primaryColor,
-                  size: 36.0,
-                ),
-              )
-            : TabBarView(
-                children: <Widget>[
-                  NewsList(usNewsList),
-                  NewsList(egyptNewsList),
-                ],
+        drawer: MainDrawer(),
+        body: TabBarView(
+          children: <Widget>[
+            Center(
+              child: FutureBuilder<News>(
+                future: getUsNews,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    print(snapshot.data);
+                    return NewsList(snapshot.data.articles);
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                    return Text(snapshot.error);
+                  }
+                  return SpinKitCubeGrid(
+                    color: Theme.of(context).primaryColor,
+                    size: 36.0,
+                  );
+                },
               ),
+            ),
+            Center(
+              child: FutureBuilder<News>(
+                future: getEgNews,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    print(snapshot.data);
+                    return NewsList(snapshot.data.articles);
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                    return Text(snapshot.error);
+                  }
+                  return SpinKitCubeGrid(
+                    color: Theme.of(context).primaryColor,
+                    size: 36.0,
+                  );
+                },
+              ),
+            ),
+            Center(
+              child: FutureBuilder<News>(
+                future: getDeNews,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    print(snapshot.data);
+                    return NewsList(snapshot.data.articles);
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                    return Text(snapshot.error);
+                  }
+                  return SpinKitCubeGrid(
+                    color: Theme.of(context).primaryColor,
+                    size: 36.0,
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

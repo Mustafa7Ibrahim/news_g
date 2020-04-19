@@ -1,36 +1,67 @@
+import 'package:audible_news/modils/article.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:audible_news/constant/constant.dart';
-import 'package:audible_news/modils/articles.dart';
-import 'package:http/http.dart' as http;
+News newsFromJson(String str) => News.fromJson(json.decode(str));
+
+String newsToJson(News data) => json.encode(data.toJson());
 
 class News {
-  List<Articles> list = [];
+  String status;
+  int totalResults;
+  List<Article> articles;
 
-  Future<List<Articles>> getNews({String about, String country}) async {
-    String url =
-        'https://newsapi.org/v2/$about?country=$country&apiKey=$apiKey';
+  News({
+    this.status,
+    this.totalResults,
+    this.articles,
+  });
 
-    var response = await http.get(url);
+  factory News.fromJson(Map<String, dynamic> json) => News(
+        status: json["status"],
+        totalResults: json["totalResults"],
+        articles: List<Article>.from(
+          json["articles"].map((x) => Article.fromJson(x)),
+        ),
+      );
 
-    var jsonData = jsonDecode(response.body);
-
-    if (jsonData['status'] == 'ok') {
-      jsonData['articles'].forEach((article) {
-        Articles articles = Articles(
-          title: article['title'] ?? '',
-          author: article['author'] ?? '',
-          description: article['description'] ?? '',
-          url: article['url'] ?? '',
-          urlToImage: article['urlToImage'] ?? '',
-          content: article['content'] ?? '',
-          publishedAt: DateTime.parse(
-            article['publishedAt'] ?? '',
-          ),
-        );
-        list.add(articles);
-      });
-    }
-    return list;
-  }
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "totalResults": totalResults,
+        "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
+      };
 }
+
+// Future<void> getNews(String url, List list) async {
+//   var response = await http.get(url);
+
+//   var jsonData = jsonDecode(response.body);
+
+//   if (jsonData['status'] == 'ok') {
+//     jsonData['articles'].forEach((article) {
+//       Articles articles = Articles(
+//         title: article['title'] ?? '',
+//         author: article['author'] ?? '',
+//         description: article['description'] ?? '',
+//         url: article['url'] ?? '',
+//         urlToImage: article['urlToImage'] ?? '',
+//         content: article['content'] ?? '',
+//         publishedAt: DateTime.parse(
+//           article['publishedAt'] ?? '',
+//         ),
+//       );
+//       list.add(articles);
+//     });
+//   }
+// }
+
+// Future<void> getUsNews() {
+//   String url = 'https://newsapi.org/v2/$topHeadline?country=$us&apiKey=$apiKey';
+//   return getNews(url, usList);
+// }
+
+// Future getEgNews() {
+//   String url =
+//       'https://newsapi.org/v2/$topHeadline?country=$egypt&apiKey=$apiKey';
+//   return getNews(url, egyptList);
+// }

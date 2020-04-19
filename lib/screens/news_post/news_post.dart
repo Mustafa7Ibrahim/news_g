@@ -1,9 +1,9 @@
-import 'package:audible_news/modils/articles.dart';
+import 'package:audible_news/modils/article.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsPost extends StatefulWidget {
-  final Articles article;
+  final Article article;
   NewsPost({this.article});
 
   @override

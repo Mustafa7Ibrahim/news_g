@@ -5,7 +5,8 @@ final String topHeadline = 'top-headlines';
 final String everyThing = 'everything';
 
 final String us = 'us';
-final String egypt = 'eg';
+final String eg = 'eg';
+final String de = 'de';
 
 ThemeData theme = ThemeData(
   primarySwatch: Colors.red,

@@ -1,10 +1,10 @@
-import 'package:audible_news/modils/articles.dart';
+import 'package:audible_news/modils/article.dart';
 import 'package:audible_news/screens/news_post/news_post.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatelessWidget {
-  final Articles article;
+  final Article article;
   NewsArticle({this.article});
 
   @override
