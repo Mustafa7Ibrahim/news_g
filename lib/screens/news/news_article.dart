@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatelessWidget {
   final Article article;
-  NewsArticle({this.article});
+  final textAlign;
+  NewsArticle({this.article, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,10 @@ class NewsArticle extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => NewsPost(article: article),
+          builder: (context) => NewsPost(
+            article: article,
+            textAlign: textAlign,
+          ),
         ),
       ),
       child: Container(
@@ -39,6 +43,7 @@ class NewsArticle extends StatelessWidget {
               margin: EdgeInsets.only(left: 12.0, top: 12.0, right: 12.0),
               child: Text(
                 article.title,
+                textAlign: textAlign,
                 style: GoogleFonts.openSans(
                   textStyle: TextStyle(
                     color: Colors.white,
@@ -52,6 +57,7 @@ class NewsArticle extends StatelessWidget {
               margin: EdgeInsets.only(left: 12.0, top: 8.0, right: 12.0),
               child: Text(
                 article.description,
+                textAlign: textAlign,
                 style: TextStyle(
                   color: Colors.white54,
                   fontWeight: FontWeight.w400,

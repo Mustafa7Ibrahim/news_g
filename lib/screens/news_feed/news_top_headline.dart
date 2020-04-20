@@ -1,17 +1,16 @@
 import 'package:audible_news/modils/news.dart';
-import 'package:audible_news/screens/news_feed/news_list.dart';
+import 'package:audible_news/screens/news/news_list.dart';
 import 'package:audible_news/services/services.dart';
-import 'package:audible_news/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NewsFeed extends StatefulWidget {
+class NewsTopHeadLine extends StatefulWidget {
   @override
-  _NewsFeedState createState() => _NewsFeedState();
+  _NewsTopHeadLineState createState() => _NewsTopHeadLineState();
 }
 
-class _NewsFeedState extends State<NewsFeed> {
+class _NewsTopHeadLineState extends State<NewsTopHeadLine> {
   TabController tabController;
   ScrollController scrollController;
 
@@ -29,7 +28,6 @@ class _NewsFeedState extends State<NewsFeed> {
 
   @override
   void dispose() {
-    tabController.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -42,7 +40,7 @@ class _NewsFeedState extends State<NewsFeed> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Feed',
+            'Top HeadLine',
             style: GoogleFonts.amiri(
               textStyle: TextStyle(
                 color: Colors.white,
@@ -52,6 +50,7 @@ class _NewsFeedState extends State<NewsFeed> {
           ),
           centerTitle: true,
           bottom: TabBar(
+            isScrollable: true,
             labelColor: Colors.white,
             controller: tabController,
             tabs: [
@@ -61,7 +60,6 @@ class _NewsFeedState extends State<NewsFeed> {
             ],
           ),
         ),
-        drawer: MainDrawer(),
         body: TabBarView(
           children: <Widget>[
             Center(
@@ -70,7 +68,7 @@ class _NewsFeedState extends State<NewsFeed> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
-                    return NewsList(snapshot.data.articles);
+                    return NewsList(snapshot.data.articles, TextAlign.start);
                   } else if (snapshot.hasError) {
                     print(snapshot.error);
                     return Text(snapshot.error);
@@ -88,7 +86,7 @@ class _NewsFeedState extends State<NewsFeed> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
-                    return NewsList(snapshot.data.articles);
+                    return NewsList(snapshot.data.articles, TextAlign.end);
                   } else if (snapshot.hasError) {
                     print(snapshot.error);
                     return Text(snapshot.error);
@@ -106,7 +104,7 @@ class _NewsFeedState extends State<NewsFeed> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
-                    return NewsList(snapshot.data.articles);
+                    return NewsList(snapshot.data.articles, TextAlign.start);
                   } else if (snapshot.hasError) {
                     print(snapshot.error);
                     return Text(snapshot.error);

@@ -1,4 +1,6 @@
-import 'package:audible_news/screens/news_feed/news_feed.dart';
+import 'package:audible_news/screens/news_everything/news_everything.dart';
+import 'package:audible_news/screens/news_feed/news_top_headline.dart';
+import 'package:audible_news/screens/news_sources/news_sources.dart';
 import 'package:audible_news/screens/search/Search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,16 @@ class _WrapperState extends State<Wrapper> {
       backgroundColor: Color.fromRGBO(43, 43, 43, 1),
     ),
     TitledNavigationBarItem(
+      icon: Icons.all_inclusive,
+      title: 'EveryThing',
+      backgroundColor: Color.fromRGBO(43, 43, 43, 1),
+    ),
+    TitledNavigationBarItem(
+      icon: Icons.ac_unit,
+      title: 'Sources',
+      backgroundColor: Color.fromRGBO(43, 43, 43, 1),
+    ),
+    TitledNavigationBarItem(
       icon: Icons.search,
       title: 'Search',
       backgroundColor: Color.fromRGBO(43, 43, 43, 1),
@@ -24,7 +36,9 @@ class _WrapperState extends State<Wrapper> {
   ];
 
   final List<Widget> widgetOptions = [
-    NewsFeed(),
+    NewsTopHeadLine(),
+    NewsEveryThing(),
+    NewsSources(),
     Search(),
   ];
 

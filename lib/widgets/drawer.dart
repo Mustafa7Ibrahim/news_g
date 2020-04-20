@@ -1,5 +1,3 @@
-import 'package:audible_news/modils/news.dart';
-import 'package:audible_news/screens/news_feed/news_feed.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatefulWidget {
