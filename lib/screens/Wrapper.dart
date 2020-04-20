@@ -1,10 +1,12 @@
-import 'package:audible_news/screens/news_everything/news_everything.dart';
-import 'package:audible_news/screens/news_feed/news_top_headline.dart';
+
 import 'package:audible_news/screens/news_sources/news_sources.dart';
 import 'package:audible_news/screens/search/Search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
+
+import 'news_headline/news_top_headline.dart';
+import 'news_topics/news_topics.dart';
 
 class Wrapper extends StatefulWidget {
   @override
@@ -37,7 +39,7 @@ class _WrapperState extends State<Wrapper> {
 
   final List<Widget> widgetOptions = [
     NewsTopHeadLine(),
-    NewsEveryThing(),
+    NewsTopics(),
     NewsSources(),
     Search(),
   ];

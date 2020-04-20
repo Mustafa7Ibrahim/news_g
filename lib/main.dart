@@ -1,10 +1,11 @@
-import 'package:audible_news/screens/news_feed/news_top_headline.dart';
 import 'package:audible_news/screens/news_post/news_post.dart';
 import 'package:audible_news/screens/news_sources/news_sources.dart';
+import 'package:audible_news/screens/news_topics/news_topics.dart';
 import 'package:flutter/material.dart';
 
 import 'constant/constant.dart';
 import 'screens/Wrapper.dart';
+import 'screens/news_headline/news_top_headline.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/news_top_headline': (context) => NewsTopHeadLine(),
         '/news_post': (context) => NewsPost(),
         '/news_sources': (context) => NewsSources(),
+        '/news_topics': (context) => NewsTopics(),
       },
     );
   }

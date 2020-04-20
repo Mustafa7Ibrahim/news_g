@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NewsEveryThing extends StatefulWidget {
+class NewsTopics extends StatefulWidget {
   @override
-  _NewsEveryThingState createState() => _NewsEveryThingState();
+  _NewsTopicsState createState() => _NewsTopicsState();
 }
 
-class _NewsEveryThingState extends State<NewsEveryThing> {
+class _NewsTopicsState extends State<NewsTopics> {
   TabController tabController;
 
   ScrollController scrollController;
@@ -42,7 +42,7 @@ class _NewsEveryThingState extends State<NewsEveryThing> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Feed',
+            'Topics',
             style: GoogleFonts.amiri(
               textStyle: TextStyle(
                 color: Colors.white,
