@@ -1,5 +1,6 @@
 import 'package:audible_news/modils/news.dart';
-import 'package:audible_news/screens/news/news_list.dart';
+import 'package:audible_news/services/services.dart';
+import 'package:audible_news/widgets/news_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,19 +15,19 @@ class _NewsTopicsState extends State<NewsTopics> {
 
   ScrollController scrollController;
 
-  Future<News> getUsNews;
+  Future<News> getAppleListNews;
 
-  Future<News> getEgNews;
+  Future<News> getBitCoinNews;
 
-  Future<News> getDeNews;
+  Future<News> getWSJListNews;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getUsNews = getListOfUsNews();
-  //   getEgNews = getListOfEgNews();
-  //   getDeNews = getListOfDeNews();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    getAppleListNews = getAppleNews();
+    getBitCoinNews = getBitcoinNews();
+    getWSJListNews = getWSJNews();
+  }
 
   @override
   void dispose() {
@@ -52,13 +53,12 @@ class _NewsTopicsState extends State<NewsTopics> {
           ),
           centerTitle: true,
           bottom: TabBar(
-            isScrollable: true,
             labelColor: Colors.white,
             controller: tabController,
             tabs: [
-              Tab(text: '#Us_News'),
-              Tab(text: '#Egypt_News'),
-              Tab(text: '#Germany_News'),
+              Tab(text: '#Apple'),
+              Tab(text: '#Bitcoin'),
+              Tab(text: '#WSJ & NT'),
             ],
           ),
         ),
@@ -66,7 +66,7 @@ class _NewsTopicsState extends State<NewsTopics> {
           children: <Widget>[
             Center(
               child: FutureBuilder<News>(
-                future: getUsNews,
+                future: getAppleListNews,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
@@ -84,11 +84,11 @@ class _NewsTopicsState extends State<NewsTopics> {
             ),
             Center(
               child: FutureBuilder<News>(
-                future: getEgNews,
+                future: getBitCoinNews,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);
-                    return NewsList(snapshot.data.articles, TextAlign.end);
+                    return NewsList(snapshot.data.articles, TextAlign.start);
                   } else if (snapshot.hasError) {
                     print(snapshot.error);
                     return Text(snapshot.error);
@@ -102,7 +102,7 @@ class _NewsTopicsState extends State<NewsTopics> {
             ),
             Center(
               child: FutureBuilder<News>(
-                future: getDeNews,
+                future: getWSJListNews,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);

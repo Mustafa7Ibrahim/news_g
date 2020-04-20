@@ -1,7 +1,9 @@
-import 'package:audible_news/modils/news.dart';
-import 'package:audible_news/services/services.dart';
+import 'package:audible_news/modils/sources.dart';
+import 'package:audible_news/screens/news_sources/sources_list.dart';
+import 'package:audible_news/services/sources_serv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class NewsSources extends StatefulWidget {
   @override
@@ -9,27 +11,36 @@ class NewsSources extends StatefulWidget {
 }
 
 class _NewsSourcesState extends State<NewsSources> {
-  Future<News> getNews;
+  Future<ListOfSources> getSources;
 
   @override
   void initState() {
     super.initState();
-    getNews = getListOfUsNews();
+    getSources = getSourcesList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Sources',
+          style: GoogleFonts.amiri(
+            textStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 24.0,
+            ),
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Center(
-        child: FutureBuilder<News>(
-          future: getNews,
+        child: FutureBuilder<ListOfSources>(
+          future: getSources,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               print(snapshot.data);
-              return Text(
-                snapshot.data.totalResults.toString(),
-                style: TextStyle(color: Colors.white),
-              );
+              return SourcesList(sourcesList: snapshot.data.sources);
             } else if (snapshot.hasError) {
               print(snapshot.error);
               return Text(snapshot.error);

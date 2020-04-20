@@ -17,12 +17,12 @@ class _WrapperState extends State<Wrapper> {
   final List<TitledNavigationBarItem> items = [
     TitledNavigationBarItem(
       icon: Icons.fiber_smart_record,
-      title: 'Feed',
+      title: 'Headlines',
       backgroundColor: Color.fromRGBO(43, 43, 43, 1),
     ),
     TitledNavigationBarItem(
       icon: Icons.all_inclusive,
-      title: 'EveryThing',
+      title: 'Topics',
       backgroundColor: Color.fromRGBO(43, 43, 43, 1),
     ),
     TitledNavigationBarItem(

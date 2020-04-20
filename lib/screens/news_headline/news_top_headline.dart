@@ -1,6 +1,6 @@
 import 'package:audible_news/modils/news.dart';
-import 'package:audible_news/screens/news/news_list.dart';
 import 'package:audible_news/services/services.dart';
+import 'package:audible_news/widgets/news_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';

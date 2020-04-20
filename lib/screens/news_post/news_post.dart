@@ -1,6 +1,8 @@
 import 'package:audible_news/modils/article.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsPost extends StatefulWidget {
   final Article article;
@@ -69,7 +71,7 @@ class _NewsPostState extends State<NewsPost> {
                             color: Colors.white,
                             size: 36.0,
                           ),
-                          onPressed: () {},
+                          onPressed: () => launchUrl(),
                         ),
                       ),
                     ],
@@ -144,10 +146,19 @@ class _NewsPostState extends State<NewsPost> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+
+  launchUrl() async {
+    var url = widget.article.url;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      Fluttertoast.showToast(msg: 'Could not launch $url');
+    }
   }
 }
