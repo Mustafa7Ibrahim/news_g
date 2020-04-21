@@ -1,6 +1,5 @@
 
 import 'package:audible_news/screens/news_sources/news_sources.dart';
-import 'package:audible_news/screens/search/Search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:titled_navigation_bar/titled_navigation_bar.dart';
@@ -41,7 +40,6 @@ class _WrapperState extends State<Wrapper> {
     NewsTopHeadLine(),
     NewsTopics(),
     NewsSources(),
-    Search(),
   ];
 
   bool navBarMode = false;
