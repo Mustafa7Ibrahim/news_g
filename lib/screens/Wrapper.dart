@@ -1,4 +1,3 @@
-
 import 'package:audible_news/screens/news_sources/news_sources.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,11 +26,6 @@ class _WrapperState extends State<Wrapper> {
     TitledNavigationBarItem(
       icon: Icons.ac_unit,
       title: 'Sources',
-      backgroundColor: Color.fromRGBO(43, 43, 43, 1),
-    ),
-    TitledNavigationBarItem(
-      icon: Icons.search,
-      title: 'Search',
       backgroundColor: Color.fromRGBO(43, 43, 43, 1),
     ),
   ];
