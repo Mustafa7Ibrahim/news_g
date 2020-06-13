@@ -4,6 +4,8 @@ import 'package:audible_news/constant/constant.dart';
 import 'package:audible_news/modils/news.dart';
 import 'package:http/http.dart' as http;
 
+import '../constant/constant.dart';
+
 // headline
 Future<News> getListOfUsNews() async {
   final response = await http
@@ -36,7 +38,7 @@ Future<News> getBitcoinNews() async {
 
 Future<News> getAppleNews() async {
   final response = await http.get(
-      'https://newsapi.org/v2/everything?q=apple&from=2020-04-19&to=2020-04-19&sortBy=popularity&apiKey=$apiKey');
+      'https://newsapi.org/v2/everything?q=apple&from=2020-06-12&to=2020-06-12&sortBy=popularity&apiKey=$apiKey');
   final jsonData = jsonDecode(response.body);
   return News.fromJson(jsonData);
 }
