@@ -1,5 +1,6 @@
-import 'package:audible_news/modils/article.dart';
 import 'dart:convert';
+
+import 'article.dart';
 
 News newsFromJson(String str) => News.fromJson(json.decode(str));
 

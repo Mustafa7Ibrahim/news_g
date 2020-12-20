@@ -1,5 +1,5 @@
-import 'package:audible_news/modils/sources.dart';
-import 'package:audible_news/screens/news_sources/source_item.dart';
+import 'package:audible_news/model/sources.dart';
+import 'package:audible_news/view/news_sources/components/source_item.dart';
 import 'package:flutter/material.dart';
 
 class SourcesList extends StatelessWidget {

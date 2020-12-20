@@ -1,5 +1,5 @@
-import 'package:audible_news/modils/article.dart';
-import 'package:audible_news/screens/news_post/news_post.dart';
+import 'package:audible_news/model/article.dart';
+import 'package:audible_news/view/news_post/news_post.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,7 +35,8 @@ class NewsArticle extends StatelessWidget {
               width: width,
               height: 250.0,
               child: Image.network(
-                article.urlToImage,
+                article?.urlToImage ??
+                    'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
                 fit: BoxFit.cover,
               ),
             ),

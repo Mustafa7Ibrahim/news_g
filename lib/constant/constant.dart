@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 
-final String apiKey = '54418b8e7605418d9ce121f9be84f407';
-final String topHeadline = 'top-headlines';
-final String everyThing = 'everything';
+const String API_KEY = '54418b8e7605418d9ce121f9be84f407';
+const String TOP_HEADLINE = 'top-headlines';
+const String EVERYTHING = 'everything';
 
-final String us = 'us';
-final String eg = 'eg';
-final String de = 'de';
+const String UNITED_STATES = 'us';
+const String EGYPT = 'eg';
+const String DEUTSCH = 'de';
+
+const String US_NEWS =
+    'https://newsapi.org/v2/$TOP_HEADLINE?country=$UNITED_STATES&apiKey=$API_KEY';
+const String EG_NEWS = 'https://newsapi.org/v2/$TOP_HEADLINE?country=$EGYPT&apiKey=$API_KEY';
+
+const String BITCOIN_NEWS = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey=$API_KEY';
+const String APPLE_NEWS = 'https://newsapi.org/v2/everything?q=apple&apiKey=$API_KEY';
+const String WSJ_NEWS =
+    'https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com&apiKey=$API_KEY';
+
+const String SOURCES = 'https://newsapi.org/v2/sources?apiKey=$API_KEY';
 
 ThemeData theme = ThemeData(
   primarySwatch: Colors.red,

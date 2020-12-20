@@ -1,4 +1,4 @@
-import 'package:audible_news/modils/article.dart';
+import 'package:audible_news/model/article.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
