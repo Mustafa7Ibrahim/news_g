@@ -24,18 +24,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   titled_navigation_bar: ^4.1.0
-  flutter_spinkit: ^4.1.2+1
-  google_fonts: ^1.1.1
-  http: ^0.12.2
-  url_launcher: ^5.7.10
-  fluttertoast: ^4.0.1
+  flutter_spinkit: ^5.0.0
+  google_fonts: ^2.1.0
+  http: ^0.13.3
+  url_launcher: ^6.0.9
+  fluttertoast: ^8.0.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_launcher_icons: ^0.7.5
-  flutter_native_splash: ^0.1.9
+  flutter_launcher_icons: ^0.9.0
+  flutter_native_splash: ^1.1.8+4
 
 flutter_icons:
   android: "launcher_icon"
