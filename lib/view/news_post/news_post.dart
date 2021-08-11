@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsPost extends StatefulWidget {
-  final Article article;
+  final Article? article;
   final textAlign;
   NewsPost({this.article, this.textAlign});
 
@@ -14,7 +14,7 @@ class NewsPost extends StatefulWidget {
 }
 
 class _NewsPostState extends State<NewsPost> {
-  ScrollController controller;
+  ScrollController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _NewsPostState extends State<NewsPost> {
                   width: width,
                   height: height * 0.4,
                   child: Image.network(
-                    widget.article.urlToImage,
+                    widget.article!.urlToImage!,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,7 +54,7 @@ class _NewsPostState extends State<NewsPost> {
                         child: Container(
                           margin: EdgeInsets.all(14.0),
                           child: Text(
-                            widget.article.source.name,
+                            widget.article!.source!.name!,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
@@ -87,7 +87,7 @@ class _NewsPostState extends State<NewsPost> {
                   child: Container(
                     margin: EdgeInsets.all(14.0),
                     child: Text(
-                      widget.article.author,
+                      widget.article!.author!,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class _NewsPostState extends State<NewsPost> {
                 Container(
                   margin: EdgeInsets.all(14.0),
                   child: Text(
-                    widget.article.publishedAt.toString(),
+                    widget.article!.publishedAt.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
@@ -121,7 +121,7 @@ class _NewsPostState extends State<NewsPost> {
                   Container(
                     margin: EdgeInsets.only(left: 12.0, top: 12.0, right: 12.0),
                     child: Text(
-                      widget.article.title,
+                      widget.article!.title!,
                       textAlign: widget.textAlign,
                       style: GoogleFonts.openSans(
                         textStyle: TextStyle(
@@ -135,7 +135,7 @@ class _NewsPostState extends State<NewsPost> {
                   Container(
                     margin: EdgeInsets.only(left: 12.0, top: 8.0, right: 12.0),
                     child: Text(
-                      widget.article.content,
+                      widget.article!.content!,
                       textAlign: widget.textAlign,
                       style: TextStyle(
                         color: Colors.white54,
@@ -154,7 +154,7 @@ class _NewsPostState extends State<NewsPost> {
   }
 
   launchUrl() async {
-    var url = widget.article.url;
+    var url = widget.article!.url!;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

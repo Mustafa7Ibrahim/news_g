@@ -10,7 +10,7 @@ class NewsTopHeadLine extends StatefulWidget {
 }
 
 class _NewsTopHeadLineState extends State<NewsTopHeadLine> {
-  TabController tabController;
+  TabController? tabController;
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SourceItem extends StatelessWidget {
   final Sources sources;
-  SourceItem({@required this.sources});
+  SourceItem({required this.sources});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -17,13 +17,13 @@ class SourceItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              sources.name,
+              sources.name!,
               style: TextStyle(color: Colors.white, fontSize: 18.0),
             ),
             Container(
               margin: EdgeInsets.only(right: 12.0, left: 12.0),
               child: Text(
-                sources.description,
+                sources.description!,
                 maxLines: 4,
                 overflow: TextOverflow.clip,
                 style: TextStyle(color: Colors.white54),
@@ -42,7 +42,7 @@ class SourceItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    sources.category,
+                    sources.category!,
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
@@ -60,7 +60,7 @@ class SourceItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    sources.language,
+                    sources.language!,
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
@@ -78,7 +78,7 @@ class SourceItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    sources.country,
+                    sources.country!,
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
@@ -91,7 +91,7 @@ class SourceItem extends StatelessWidget {
   }
 
   launchUrl() async {
-    var url = sources.url;
+    var url = sources.url!;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

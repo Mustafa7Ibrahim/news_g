@@ -9,7 +9,7 @@ class NewsTopics extends StatefulWidget {
 }
 
 class _NewsTopicsState extends State<NewsTopics> {
-  TabController tabController;
+  TabController? tabController;
 
   @override
   Widget build(BuildContext context) {

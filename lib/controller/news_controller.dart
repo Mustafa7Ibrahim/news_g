@@ -10,7 +10,7 @@ class NewsController with ChangeNotifier {
     final Uri link = Uri.parse(type);
     final response = await http.get(link);
     final jsonData = jsonDecode(response.body);
-    return News.fromJson(jsonData);
+    return News.fromJson(jsonData as Map<String, dynamic>);
   }
 
   Future<ListOfSources> getSources(String url) async {

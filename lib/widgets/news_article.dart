@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatelessWidget {
-  final Article article;
-  final textAlign;
+  final Article? article;
+  final TextAlign? textAlign;
   NewsArticle({this.article, this.textAlign});
 
   @override
@@ -43,7 +43,7 @@ class NewsArticle extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 12.0, top: 12.0, right: 12.0),
               child: Text(
-                article.title,
+                article!.title!,
                 textAlign: textAlign,
                 style: GoogleFonts.openSans(
                   textStyle: TextStyle(
@@ -57,7 +57,7 @@ class NewsArticle extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 12.0, top: 8.0, right: 12.0),
               child: Text(
-                article.description,
+                article!.description!,
                 textAlign: textAlign,
                 style: TextStyle(
                   color: Colors.white54,
@@ -79,7 +79,7 @@ class NewsArticle extends StatelessWidget {
                       right: 12.0,
                     ),
                     child: Text(
-                      article.author,
+                      article!.author!,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
@@ -96,7 +96,7 @@ class NewsArticle extends StatelessWidget {
                     right: 12.0,
                   ),
                   child: Text(
-                    article.publishedAt.toString(),
+                    article!.publishedAt.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w400,

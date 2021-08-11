@@ -31,9 +31,9 @@ class _NewsSourcesState extends State<NewsSources> {
           future: _newsController.getSources(SOURCES),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return SourcesList(sourcesList: snapshot.data.sources);
+              return SourcesList(sourcesList: snapshot.data!.sources);
             } else if (snapshot.hasError) {
-              return Text(snapshot.error);
+              return Text(snapshot.error as String);
             }
             return SpinKitCubeGrid(
               color: Theme.of(context).primaryColor,

@@ -7,9 +7,9 @@ News newsFromJson(String str) => News.fromJson(json.decode(str));
 String newsToJson(News data) => json.encode(data.toJson());
 
 class News {
-  String status;
-  int totalResults;
-  List<Article> articles;
+  String? status;
+  int? totalResults;
+  List<Article>? articles;
 
   News({
     this.status,
@@ -28,6 +28,6 @@ class News {
   Map<String, dynamic> toJson() => {
         "status": status,
         "totalResults": totalResults,
-        "articles": List<dynamic>.from(articles.map((x) => x.toJson())),
+        "articles": List<dynamic>.from(articles!.map((x) => x.toJson())),
       };
 }

@@ -8,18 +8,18 @@ class NewsBuilder extends StatelessWidget {
   NewsBuilder({this.type, this.textAlign});
 
   final NewsController _newsController = NewsController();
-  final TextAlign textAlign;
-  final String type;
+  final TextAlign? textAlign;
+  final String? type;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<News>(
-      future: _newsController.getNews(type),
+      future: _newsController.getNews(type!),
       builder: (context, snapshot) {
         return snapshot.hasData
-            ? NewsList(snapshot.data.articles, textAlign)
+            ? NewsList(snapshot.data!.articles, textAlign)
             : snapshot.hasError
-                ? Center(child: Text(snapshot.error))
+                ? Center(child: Text(snapshot.error as String))
                 : SpinKitCubeGrid(color: Theme.of(context).primaryColor, size: 36.0);
       },
     );

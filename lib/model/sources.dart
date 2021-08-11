@@ -6,8 +6,8 @@ ListOfSources sourcesFromJson(String str) =>
 String sourcesToJson(Sources data) => json.encode(data.toJson());
 
 class ListOfSources {
-  String status;
-  List<Sources> sources;
+  String? status;
+  List<Sources>? sources;
 
   ListOfSources({
     this.status,
@@ -23,13 +23,13 @@ class ListOfSources {
 }
 
 class Sources {
-  String id;
-  String name;
-  String description;
-  String url;
-  String category;
-  String language;
-  String country;
+  String? id;
+  String? name;
+  String? description;
+  String? url;
+  String? category;
+  String? language;
+  String? country;
 
   Sources({
     this.id,
