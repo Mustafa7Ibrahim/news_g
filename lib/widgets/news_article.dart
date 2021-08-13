@@ -1,6 +1,7 @@
 import 'package:audible_news/model/article.dart';
 import 'package:audible_news/view/news_post/news_post.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatelessWidget {
@@ -22,12 +23,8 @@ class NewsArticle extends StatelessWidget {
           ),
         ),
       ),
-      child: Container(
-        margin: EdgeInsets.only(top: 12.0),
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(43, 43, 43, 1),
-        ),
-        width: width,
+      child: Neumorphic(
+        margin: EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -47,7 +44,6 @@ class NewsArticle extends StatelessWidget {
                 textAlign: textAlign,
                 style: GoogleFonts.openSans(
                   textStyle: TextStyle(
-                    color: Colors.white,
                     fontWeight: FontWeight.w800,
                     fontSize: 16.0,
                   ),
@@ -60,7 +56,6 @@ class NewsArticle extends StatelessWidget {
                 article!.description!,
                 textAlign: textAlign,
                 style: TextStyle(
-                  color: Colors.white54,
                   fontWeight: FontWeight.w400,
                   fontSize: 14.0,
                 ),
@@ -81,7 +76,6 @@ class NewsArticle extends StatelessWidget {
                     child: Text(
                       article!.author!,
                       style: TextStyle(
-                        color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontSize: 12.0,
                       ),
@@ -98,7 +92,6 @@ class NewsArticle extends StatelessWidget {
                   child: Text(
                     article!.publishedAt.toString(),
                     style: TextStyle(
-                      color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: 12.0,
                     ),

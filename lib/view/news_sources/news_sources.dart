@@ -3,6 +3,7 @@ import 'package:audible_news/model/sources.dart';
 import 'package:audible_news/constant/constant.dart';
 import 'package:audible_news/view/news_sources/components/sources_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,13 +18,8 @@ class _NewsSourcesState extends State<NewsSources> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Sources',
-          style: GoogleFonts.amiri(
-            textStyle: TextStyle(color: Colors.white, fontSize: 24.0),
-          ),
-        ),
+      appBar: NeumorphicAppBar(
+        title: Text('Sources'),
         centerTitle: true,
       ),
       body: Center(

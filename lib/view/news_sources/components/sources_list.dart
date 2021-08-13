@@ -12,6 +12,8 @@ class SourcesList extends StatelessWidget {
       itemCount: sourcesList!.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 12.0,
       ),
       itemBuilder: (context, index) {
         return SourceItem(sources: sourcesList![index]);

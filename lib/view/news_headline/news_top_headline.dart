@@ -1,6 +1,6 @@
 import 'package:audible_news/constant/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'components/news_builder.dart';
 
@@ -10,33 +10,74 @@ class NewsTopHeadLine extends StatefulWidget {
 }
 
 class _NewsTopHeadLineState extends State<NewsTopHeadLine> {
-  TabController? tabController;
+  int _selectedIndex = 0;
+
+  List<Widget> widgets() => [
+        NewsBuilder(textAlign: TextAlign.start, type: US_NEWS),
+        NewsBuilder(textAlign: TextAlign.end, type: EG_NEWS),
+      ];
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
+    return NeumorphicBackground(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Top HeadLine',
-            style: GoogleFonts.amiri(
-              textStyle: TextStyle(color: Colors.white, fontSize: 24.0),
-            ),
-          ),
+        appBar: NeumorphicAppBar(
+          title: Text('Top HeadLine'),
           centerTitle: true,
-          bottom: TabBar(
-            isScrollable: true,
-            labelColor: Colors.white,
-            controller: tabController,
-            tabs: [Tab(text: '#Us_News'), Tab(text: '#Egypt_News')],
-          ),
         ),
-        body: TabBarView(
-          children: <Widget>[
-            NewsBuilder(textAlign: TextAlign.start, type: US_NEWS),
-            NewsBuilder(textAlign: TextAlign.end, type: EG_NEWS),
+        body: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 12.0),
+              child: NeumorphicToggle(
+                selectedIndex: _selectedIndex,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedIndex = value;
+                    print("_firstSelected: $_selectedIndex");
+                  });
+                },
+                displayForegroundOnlyIfSelected: true,
+                thumb: Neumorphic(
+                  style: NeumorphicStyle(
+                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.all(Radius.circular(12))),
+                  ),
+                ),
+                children: [
+                  ToggleElement(
+                    foreground: Center(
+                      child: Text(
+                        'US_NEWS',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                    background: Center(
+                      child: Text(
+                        "US_NEWS",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                  ToggleElement(
+                    foreground: Center(
+                      child: Text(
+                        'EG_NEWS',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                    background: Center(
+                      child: Text(
+                        "EG_NEWS",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: widgets().elementAt(_selectedIndex),
+            ),
           ],
         ),
       ),
