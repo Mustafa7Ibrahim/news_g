@@ -16,17 +16,13 @@ class SourceItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(
-              sources.name!,
-              // style: TextStyle(color: Colors.white, fontSize: 18.0),
-            ),
+            Text(sources.name!),
             Container(
               margin: EdgeInsets.only(right: 12.0, left: 12.0),
               child: Text(
                 sources.description!,
                 maxLines: 4,
                 overflow: TextOverflow.clip,
-                // style: TextStyle(color: Colors.white54),
               ),
             ),
             Container(
@@ -38,12 +34,10 @@ class SourceItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Category',
-                      // style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Text(
                     sources.category!,
-                    // style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -56,12 +50,10 @@ class SourceItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'language',
-                      // style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Text(
                     sources.language!,
-                    // style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -74,12 +66,10 @@ class SourceItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'country',
-                      // style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Text(
                     sources.country!,
-                    // style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),

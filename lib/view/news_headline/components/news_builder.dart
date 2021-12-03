@@ -2,7 +2,7 @@ import 'package:audible_news/controller/news_controller.dart';
 import 'package:audible_news/model/news.dart';
 import 'package:audible_news/widgets/news_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class NewsBuilder extends StatelessWidget {
   NewsBuilder({this.type, this.textAlign});
@@ -20,7 +20,7 @@ class NewsBuilder extends StatelessWidget {
             ? NewsList(snapshot.data!.articles, textAlign)
             : snapshot.hasError
                 ? Center(child: Text(snapshot.error as String))
-                : SpinKitCubeGrid(color: Theme.of(context).primaryColor, size: 36.0);
+                : Center(child: NeumorphicProgressIndeterminate());
       },
     );
   }

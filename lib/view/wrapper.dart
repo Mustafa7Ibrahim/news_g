@@ -1,9 +1,6 @@
-import 'package:audible_news/constant/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:titled_navigation_bar/titled_navigation_bar.dart';
 
 import 'news_headline/news_top_headline.dart';
 import 'news_sources/news_sources.dart';
@@ -44,7 +41,9 @@ class _WrapperState extends State<Wrapper> {
                   ),
                   depth: selectedIndex == 0 ? -10.0 : 10.0,
                 ),
-                margin: EdgeInsets.all(12.0),
+                margin: EdgeInsets.symmetric(
+                  horizontal: 34.0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

@@ -9,16 +9,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeumorphicApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
         baseColor: Color(0xFFFFFFFF),
-        lightSource: LightSource.topLeft,
+        lightSource: LightSource.top,
         depth: 10,
-      ),
-      darkTheme: NeumorphicThemeData(
-        baseColor: Color(0xFF3E3E3E),
-        lightSource: LightSource.topLeft,
-        depth: 2,
       ),
       home: Wrapper(),
     );
