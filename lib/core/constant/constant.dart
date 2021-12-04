@@ -20,12 +20,24 @@ const String WSJ_NEWS =
 const String SOURCES = 'https://newsapi.org/v2/sources?apiKey=$API_KEY';
 
 ThemeData theme = ThemeData(
-  primarySwatch: Colors.red,
-  accentColor: Colors.redAccent,
+  colorScheme: ColorScheme(
+    primary: Colors.red,
+    primaryVariant: Colors.redAccent,
+    secondary: Colors.redAccent,
+    secondaryVariant: Colors.red,
+    surface: Colors.grey[850],
+    background: Colors.grey[850],
+    error: Colors.red,
+    onPrimary: Colors.white,
+    onSecondary: Colors.white,
+    onSurface: Colors.white,
+    onBackground: Colors.white,
+    onError: Colors.white,
+    brightness: Brightness.dark,
+  ),
   scaffoldBackgroundColor: Colors.black,
   appBarTheme: AppBarTheme(
-    color: Color.fromRGBO(43, 43, 43, 1),
+    color: Colors.grey[850],
     elevation: 0.0,
-    brightness: Brightness.dark,
   ),
 );

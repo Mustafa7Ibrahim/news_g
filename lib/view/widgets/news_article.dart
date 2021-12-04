@@ -1,6 +1,8 @@
-import 'package:audible_news/model/article.dart';
+import 'package:audible_news/models/article.dart';
 import 'package:audible_news/view/news_post/news_post.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NewsArticle extends StatelessWidget {
@@ -34,10 +36,18 @@ class NewsArticle extends StatelessWidget {
             SizedBox(
               width: width,
               height: 250.0,
-              child: Image.network(
-                article?.urlToImage ??
-                    'https://i.picsum.photos/id/1015/6000/4000.jpg?hmac=aHjb0fRa1t14DTIEBcoC12c5rAXOSwnVlaA5ujxPQ0I',
-                fit: BoxFit.cover,
+              child: CachedNetworkImage(
+                imageUrl: article.urlToImage,
+                placeholder: (context, url) =>
+                    SpinKitCubeGrid(color: Theme.of(context).colorScheme.primary, size: 36.0),
+                errorWidget: (context, url, error) => Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.error_outline_rounded),
+                      Text(error.toString()),
+                    ],
+                  ),
+                ),
               ),
             ),
             Container(
@@ -57,7 +67,7 @@ class NewsArticle extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(left: 12.0, top: 8.0, right: 12.0),
               child: Text(
-                article.description,
+                "${article.description}",
                 textAlign: textAlign,
                 style: TextStyle(
                   color: Colors.white54,

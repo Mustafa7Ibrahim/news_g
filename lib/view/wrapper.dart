@@ -46,13 +46,13 @@ class _WrapperState extends State<Wrapper> {
       bottomNavigationBar: TitledBottomNavigationBar(
         onTap: (index) => setState(() => selectedIndex = index),
         items: items,
-        activeColor: Theme.of(context).primaryColor,
+        activeColor: Theme.of(context).colorScheme.primary,
         currentIndex: selectedIndex,
         curve: Curves.ease,
         inactiveColor: Colors.white,
         inactiveStripColor: Color.fromRGBO(43, 43, 43, 1),
         reverse: navBarMode,
-        indicatorColor: Theme.of(context).primaryColor,
+        indicatorColor: Theme.of(context).colorScheme.primaryVariant,
       ),
     );
   }

@@ -1,7 +1,12 @@
-import 'package:audible_news/constant/constant.dart';
+import 'package:audible_news/bloc/news_cubit/news_cubit.dart';
+import 'package:audible_news/core/constant/constant.dart';
+import 'package:audible_news/repository/news_repository/news_repository.dart';
 import 'package:audible_news/view/news_headline/components/news_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../injection_container.dart';
 
 class NewsTopics extends StatefulWidget {
   @override
@@ -37,9 +42,18 @@ class _NewsTopicsState extends State<NewsTopics> {
         ),
         body: TabBarView(
           children: <Widget>[
-            NewsBuilder(textAlign: TextAlign.end, type: APPLE_NEWS),
-            NewsBuilder(textAlign: TextAlign.end, type: BITCOIN_NEWS),
-            NewsBuilder(textAlign: TextAlign.end, type: WSJ_NEWS),
+            BlocProvider(
+              create: (context) => NewsCubit(getIt<NewsRepository>())..getNews(APPLE_NEWS),
+              child: NewsBuilder(textAlign: TextAlign.end),
+            ),
+            BlocProvider(
+              create: (context) => NewsCubit(getIt<NewsRepository>())..getNews(BITCOIN_NEWS),
+              child: NewsBuilder(textAlign: TextAlign.end),
+            ),
+            BlocProvider(
+              create: (context) => NewsCubit(getIt<NewsRepository>())..getNews(WSJ_NEWS),
+              child: NewsBuilder(textAlign: TextAlign.end),
+            ),
           ],
         ),
       ),

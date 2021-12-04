@@ -1,5 +1,9 @@
-import 'package:audible_news/constant/constant.dart';
+import 'package:audible_news/bloc/news_cubit/news_cubit.dart';
+import 'package:audible_news/core/constant/constant.dart';
+import 'package:audible_news/injection_container.dart';
+import 'package:audible_news/repository/news_repository/news_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'components/news_builder.dart';
@@ -35,8 +39,14 @@ class _NewsTopHeadLineState extends State<NewsTopHeadLine> {
         ),
         body: TabBarView(
           children: <Widget>[
-            NewsBuilder(textAlign: TextAlign.start, type: US_NEWS),
-            NewsBuilder(textAlign: TextAlign.end, type: EG_NEWS),
+            BlocProvider(
+              create: (context) => NewsCubit(getIt<NewsRepository>())..getNews(US_NEWS),
+              child: NewsBuilder(textAlign: TextAlign.start),
+            ),
+            BlocProvider(
+              create: (context) => NewsCubit(getIt<NewsRepository>())..getNews(EG_NEWS),
+              child: NewsBuilder(textAlign: TextAlign.end),
+            ),
           ],
         ),
       ),

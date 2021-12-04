@@ -1,4 +1,4 @@
-import 'package:audible_news/model/sources.dart';
+import 'package:audible_news/models/sources.dart';
 import 'package:audible_news/view/news_sources/components/source_item.dart';
 import 'package:flutter/material.dart';
 
