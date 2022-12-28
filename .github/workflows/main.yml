@@ -26,7 +26,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.3.10'
-      - run: flutter doctor --android-licenses
       - run: flutter doctor
       - run: flutter --version
       - run: flutter pub get
